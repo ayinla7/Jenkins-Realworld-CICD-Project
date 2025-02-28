@@ -136,5 +136,3 @@ pipeline {
     }
   }
 }
-
-./splunk add forward-server 35.178.200.170:9997
