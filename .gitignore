@@ -1,1 +1,21 @@
+# Terraform files
+*.tfstate
+*.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+terraform.tfvars
+
+# Provider binaries
+.terraform/providers/
+
+# Sensitive files
+Terraform/secret/*.pem
+
+# Backup files
+*.bak
+
+# Installation scripts
+installation-scripts/*.sh
 .DS_Store
+.gitignore
+Terraform/.DS_Store
