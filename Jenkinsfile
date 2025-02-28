@@ -72,8 +72,6 @@ pipeline {
     //       }
     //    }
     // }
-
-    //kwam
     stage("Nexus Artifact Uploader"){
         steps{
            nexusArtifactUploader(
