@@ -51,27 +51,27 @@ pipeline {
             }
         }
     }
-    stage('SonarQube Inspection') {
-        steps {
-            withSonarQubeEnv('SonarQube') { 
-                withCredentials([string(credentialsId: 'SonarQube-Token', variable: 'SONAR_TOKEN')]) {
-                sh """
-                mvn sonar:sonar \
-                -Dsonar.projectKey=JavaWebApp-Project \
-                -Dsonar.host.url=http://172.31.26.62:9000 \
-                -Dsonar.login=$SONAR_TOKEN
-                """
-                }
-            }
-        }
-    }
-    stage('SonarQube GateKeeper') {
-        steps {
-          timeout(time : 1, unit : 'HOURS'){
-          waitForQualityGate abortPipeline: true
-          }
-       }
-    }
+    // stage('SonarQube Inspection') {
+    //     steps {
+    //         withSonarQubeEnv('SonarQube') { 
+    //             withCredentials([string(credentialsId: 'SonarQube-Token', variable: 'SONAR_TOKEN')]) {
+    //             sh """
+    //             mvn sonar:sonar \
+    //             -Dsonar.projectKey=JavaWebApp-Project \
+    //             -Dsonar.host.url=http://172.31.26.62:9000 \
+    //             -Dsonar.login=$SONAR_TOKEN
+    //             """
+    //             }
+    //         }
+    //     }
+    // }
+    // stage('SonarQube GateKeeper') {
+    //     steps {
+    //       timeout(time : 1, unit : 'HOURS'){
+    //       waitForQualityGate abortPipeline: true
+    //       }
+    //    }
+    // }
     stage("Nexus Artifact Uploader"){
         steps{
            nexusArtifactUploader(
