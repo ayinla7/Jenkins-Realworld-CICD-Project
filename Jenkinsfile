@@ -22,7 +22,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'mvn clean package'
+        sh 'mvn clean package -X'
       }
       post {
         success {
@@ -33,12 +33,12 @@ pipeline {
     }
     stage('Unit Test'){
         steps {
-            sh 'mvn test'
+            sh 'mvn test -X'
         }
     }
     stage('Integration Test'){
         steps {
-          sh 'mvn verify -DskipUnitTests'
+          sh 'mvn verify -DskipUnitTests -X'
         }
     }
     stage ('Checkstyle Code Analysis'){
