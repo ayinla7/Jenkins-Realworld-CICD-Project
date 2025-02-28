@@ -19,3 +19,4 @@ installation-scripts/*.sh
 .DS_Store
 .gitignore
 Terraform/.DS_Store
+jenkins.pem

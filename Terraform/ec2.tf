@@ -1,13 +1,13 @@
 #Add jenkins EC2
 resource "aws_instance" "jenkins" {
-  ami           = var.ami-Amazon-Linux-2 # Change this to the correct Amazon Linux 2 AMI ID for your region
+  ami           = var.ami-ubuntu-22 # Change this to the correct Amazon Linux 2 AMI ID for your region
   instance_type = var.t2-medium
   key_name      = var.key-pair-jenkins # Replace with your actual key pair name
 
   security_groups = [aws_security_group.jenkins_sg.name]
 
   iam_instance_profile = "AWS-EC2FullAccess-Role"
-  user_data = file("./installation-scripts/jenkins-install.sh")
+  user_data = file("./installation-scripts/jenkins-install-ubuntu.sh")
 
   tags = {
     Name = "Jenkins"
